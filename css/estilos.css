@@ -4,16 +4,19 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-color: #f5ebe0; }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #f5ebe0; }
+  font-family: "Poppins", sans-serif; }
 
 header .navbar {
   background-color: #d6ccc2 !important; }
   header .navbar div {
     background-color: #d6ccc2; }
-    header .navbar div a img {
-      width: 150px;
-      height: 56px; }
+    header .navbar div a {
+      padding: 0;
+      background-color: #d6ccc2; }
+      header .navbar div a img {
+        width: 150px;
+        height: 56px; }

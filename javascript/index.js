@@ -60,6 +60,7 @@ while(true){
     
     
 }
+
 console.log("El valor de tu pedido es: "+ total);
 
 function mostrarProductos(){
