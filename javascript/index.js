@@ -50,7 +50,6 @@ while(true){
 
     seguir=prompt("Deseas seguir tu compra? (ingresa 'si' para seguir o 'no' para seguir con el total ");
 
-    console.log(seguir.toLowerCase())
 
     if (seguir.toLowerCase()==="no"){
         break;
