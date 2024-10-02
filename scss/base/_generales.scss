@@ -1,5 +1,14 @@
 /*!-----FONTS------*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$coloresPrincipales: #e3d5ca , #d6ccc2, #e3d5ca, #ffe5ec, #ffc2d1, #ffc2d1, #ffb3c6, #000814;
+$botones : (
+    esquinas: 8px,
+    color1: #ffe5ec,
+    color2:  #ffc2d1,
+    borde: #ffe5ec,
+    pading: 2px
+);
 /*-----RESET-----*/
 *{
     margin: 0;
@@ -9,6 +18,21 @@
 }
 body{
     font-family: "Poppins", sans-serif;
-    
+    .botones{
+        padding: map-get($botones, pading );
+        border-radius: map-get( $botones ,  esquinas );
+        background-color: map-get($botones , color1 );
+        border-color: map-get($botones , color1 ) ;
+        font-weight: Medium;
+        font-style: oblique;
+        &:hover{
+            background-color: map-get($botones , color2 )
+        }
+    }
 }
+
+
+
+
+
 

@@ -9,6 +9,15 @@
 
 body {
   font-family: "Poppins", sans-serif; }
+  body .botones {
+    padding: 2px;
+    border-radius: 8px;
+    background-color: #ffe5ec;
+    border-color: #ffe5ec;
+    font-weight: Medium;
+    font-style: oblique; }
+    body .botones:hover {
+      background-color: #ffc2d1; }
 
 header .navbar {
   background-color: #d6ccc2 !important; }
@@ -20,3 +29,9 @@ header .navbar {
       header .navbar div a img {
         width: 150px;
         height: 56px; }
+
+main .categorias div {
+  display: flex;
+  justify-content: space-around;
+  padding: 2px;
+  background-color: #e3d5ca; }
