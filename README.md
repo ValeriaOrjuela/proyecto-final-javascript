@@ -1,0 +1,1 @@
+El archivo JavaScript index incluye el proceso de compra para 5 productos, pregunta que producto quiere, cuantos de ese producto y si desea agregar mas cosas, para al final determinar el valor total de la compra.
