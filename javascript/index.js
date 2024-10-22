@@ -96,6 +96,9 @@ function actualizarCantidad(cantidad, producto, color){
             for (const colord of prod.colorDisp){
                 if(colord.color === color){
                     colord.cantidad = colord.cantidad - cantidad;
+                    if (colord.cantidad <=1){
+                        
+                    }
                 }
             }
         }
@@ -134,13 +137,13 @@ function verificacionColor(produ, color){
                     return true;
                 }
             }
-
         }
     }
     if(disp != true){
         return false;
     }
 }
+
 
 while(true){
     
