@@ -1,10 +1,12 @@
 
 
+
 const producto1 = 70000;
 const producto2 = 20000;
 const producto3 = 80500;
 const producto4 = 105800;
 const producto5 = 38750;
+
 
 let total, cantidad, multiplicacion, suma, producto;
 total = 0;
@@ -86,9 +88,31 @@ let productos = [
 
 // }
 
-function agregarProducto() {
+function agregarProducto(id, nombre, precio) {
+    let color, cantidad
+    this.id = id;
+    this.nombre = nombre;
+    this.precio = precio;
+    let colores = parseInt(prompt("Cuantos colores va a inscribir?"));
+    for(let cant = 0; cant <= colores-1; cant++){
+        color= prompt("Ingrese el color");
+        color= color.toLocaleLowerCase()
+        cantidad = parseInt(prompt("Cuantos porductos hay de ese color"))
+        this.colorDisp = new ColorDisp(color,cantidad);
+    }
+}
+
+function ColorDisp(color, cantidad){
+    this.color = color;
+    this.cantidad = cantidad;
 
 }
+
+
+// let prod4 = new agregarProducto(4,"producto 4", 20000);
+// console.log(prod4);
+
+
 function actualizarCantidad(cantidad, producto, color) {
     for (const prod of productos) {
         console.log(prod);
@@ -151,17 +175,27 @@ while (true) {
     mostrarProductos();
 
     producto = parseInt(prompt("Cual producto deseas: 1, 2, 3, 4 o 5? "));
+    console.log(producto);
 
     mostrarColores(producto);
 
     let color = prompt("Cual de los colores quieres?");
-    while (verificacionColor(producto, color) == false) {
-        if (verificacionColor(producto, color) == false) {
-            console.log("Ingresaste un color invalido");
-            mostrarColores(producto);
-            color = prompt("Cual de los colores quieres?");
+
+
+
+    if(producto != NaN ){
+        while (verificacionColor(producto, color) == false) {
+            if (verificacionColor(producto, color) == false) {
+                console.log("Ingresaste un color invalido");
+                mostrarColores(producto);
+                color = prompt("Cual de los colores quieres?");
+                if(color === ""){
+                    break;
+                }
+            };
         };
-    };
+    }
+
 
 
     color = color.toLocaleLowerCase();
