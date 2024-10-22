@@ -124,6 +124,24 @@ function multi(a,b){
     return a*b;
 }
 
+function verificacionColor(produ, color){
+    let disp
+    for(const prod of productos){
+        if(produ === prod.id){
+            for(col of prod.colorDisp){
+                if (color === col.color){
+                    disp = true;
+                    return true;
+                }
+            }
+
+        }
+    }
+    if(disp != true){
+        return false;
+    }
+}
+
 while(true){
     
     mostrarProductos();
@@ -133,6 +151,14 @@ while(true){
     mostrarColores(producto);
 
     let color = prompt ("Cual de los colores quieres?");
+    while(verificacionColor(producto,color)== false){
+        if(verificacionColor(producto,color)== false){
+            console.log("Ingresaste un color invalido");
+            mostrarColores(producto);
+            color = prompt ("Cual de los colores quieres?");
+        };
+    };
+
 
     color = color.toLocaleLowerCase();
     
