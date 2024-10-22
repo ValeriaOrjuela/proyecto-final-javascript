@@ -11,6 +11,7 @@ const producto5 = 38750;
 let total, cantidad, multiplicacion, suma, producto;
 total = 0;
 let seguir;
+let carrito =[];
 let productos = [
     {
         id: 1,
@@ -256,6 +257,22 @@ function mostrarProductos() {
         console.log(prod.nombre + ": " + prod.precio);
     }
 }
+function mostrarProdHTML(){
+    const PRODUCTOS_SECTION = document.getElementById('productosDestacados');
+    productos.forEach(producto => {
+        const CARD_DIV = document.createElement('div');
+        CARD_DIV.className = 'card-container';
+        CARD_DIV.innerHTML = 
+        `
+        <h3>${producto.nombre}</h3>
+        <p>${producto.precio}</p>
+        <button onclick = "anadirCarrito(${producto.id})">agregar</button>
+
+        `
+        PRODUCTOS_SECTION.appendChild(CARD_DIV);
+    });
+}
+mostrarProdHTML()
 
 
 
