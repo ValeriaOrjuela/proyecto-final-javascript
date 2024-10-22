@@ -9,7 +9,7 @@ const producto5 =38750;
 let total, cantidad, multiplicacion, suma,producto;
 total=0;
 let seguir;
-productos = [
+let productos = [
     {
         id: 1,
         nombre: "producto 1",
@@ -113,7 +113,7 @@ function mostrarColores(producto){
 }
 function totalmult(prod, canti, operacion){
     let precio
-    for( produ of productos){
+    for( const produ of productos){
         if (prod === produ.id){
             precio= produ.precio;
         }
