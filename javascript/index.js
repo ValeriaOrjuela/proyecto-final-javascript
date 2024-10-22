@@ -31,7 +31,8 @@ productos = [
                 color: "negro",
                 cantidad: 400,
             }
-        ]
+        ], 
+        precio: 5000
     },
     {
         id: 2,
@@ -47,7 +48,8 @@ productos = [
                 color: "negro",
                 cantidad: 20,
             }
-        ]
+        ],
+        precio: 10000
     },   
     {
         id: 3,
@@ -70,49 +72,88 @@ productos = [
                 color: "negro",
                 cantidad: 400,
             }
-        ]
+        ], 
+        precio: 3500
     }
 ];
 
-console.log(productos);
+// console.log(productos);
+// for( const prod of productos){
+//     for(const colo of prod.colorDisp){
+//         colo.cantidad= colo.cantidad-1;
+//         console.log(colo.cantidad);
+//     }
+    
+// }
 
 function agregarProducto(){
 
 }
-function actualizarCantidad(cantidad, producto){
+function actualizarCantidad(cantidad, producto, color){
+    for( const prod of productos){
+        console.log(prod);
+        if (prod.id === producto){
+            for (const colord of prod.colorDisp){
+                if(colord.color === color){
+                    colord.cantidad = colord.cantidad - cantidad;
+                }
+            }
+        }
+    }
+}
 
+function mostrarColores(producto){
+    for(const prod of productos){
+        if(prod.id=== producto){
+            for(const col of prod.colorDisp){
+                console.log(col.color)
+            }
+        }
+    }
 }
 while(true){
     
     mostrarProductos();
 
     producto=parseInt(prompt("Cual producto deseas: 1, 2, 3, 4 o 5? "));
+
+    mostrarColores(producto);
+
+    let color = prompt ("Cual de los colores quieres?");
+
+    color = color.toLocaleLowerCase();
+    
     multiplicacion= function(precio,cantidad){
         return precio*cantidad;
     }
     switch(producto){
         case 1:
             cantidad=parseInt(prompt("Cuantas unidades quieres: "));
+            actualizarCantidad(cantidad, producto, color);
             console.log("Total producto 1: " + multiplicacion(producto1,cantidad));
             total= total + multiplicacion(producto1,cantidad);
             break;
         case 2:
             cantidad=parseInt(prompt("Cuantas unidades quieres: "));
+            actualizarCantidad(cantidad, producto, color);
             console.log("Total producto 2: " + multiplicacion(producto2,cantidad));
             total=total + multiplicacion(producto2,cantidad);
             break;
         case 3:
             cantidad=parseInt(prompt("Cuantas unidades quieres: "));
+            actualizarCantidad(cantidad, producto, color);
             console.log("Total producto 3: " + multiplicacion(producto3,cantidad));
             total= total + multiplicacion(producto3,cantidad);
             break;
         case 4:
             cantidad=parseInt(prompt("Cuantas unidades quieres: "));
+            actualizarCantidad(cantidad, producto, color);
             console.log("Total producto 4: " + multiplicacion(producto4,cantidad));
             total= total + multiplicacion(producto4,cantidad);
             break;
         case 5:
             cantidad=parseInt(prompt("Cuantas unidades quieres: "));
+            actualizarCantidad(cantidad, producto, color);
             console.log("Total producto 5: " + multiplicacion(producto5,cantidad));
             total= total + multiplicacion(producto5,cantidad);
 
