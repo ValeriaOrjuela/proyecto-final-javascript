@@ -1,0 +1,25 @@
+case 2:
+            cantidad=parseInt(prompt("Cuantas unidades quieres: "));
+            actualizarCantidad(cantidad, producto, color);
+            console.log("Total producto 2: " + multiplicacion(producto2,cantidad));
+            total=total + multiplicacion(producto2,cantidad);
+            break;
+        case 3:
+            cantidad=parseInt(prompt("Cuantas unidades quieres: "));
+            actualizarCantidad(cantidad, producto, color);
+            console.log("Total producto 3: " + multiplicacion(producto3,cantidad));
+            total= total + multiplicacion(producto3,cantidad);
+            break;
+        case 4:
+            cantidad=parseInt(prompt("Cuantas unidades quieres: "));
+            actualizarCantidad(cantidad, producto, color);
+            console.log("Total producto 4: " + multiplicacion(producto4,cantidad));
+            total= total + multiplicacion(producto4,cantidad);
+            break;
+        case 5:
+            cantidad=parseInt(prompt("Cuantas unidades quieres: "));
+            actualizarCantidad(cantidad, producto, color);
+            console.log("Total producto 5: " + multiplicacion(producto5,cantidad));
+            total= total + multiplicacion(producto5,cantidad);
+
+            break;

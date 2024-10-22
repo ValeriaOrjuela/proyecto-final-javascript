@@ -111,6 +111,19 @@ function mostrarColores(producto){
         }
     }
 }
+function totalmult(prod, canti, operacion){
+    let precio
+    for( produ of productos){
+        if (prod === produ.id){
+            precio= produ.precio;
+        }
+    }
+    return operacion(precio,canti);
+}
+function multi(a,b){
+    return a*b;
+}
+
 while(true){
     
     mostrarProductos();
@@ -123,40 +136,37 @@ while(true){
 
     color = color.toLocaleLowerCase();
     
-    multiplicacion= function(precio,cantidad){
-        return precio*cantidad;
-    }
+
     switch(producto){
         case 1:
             cantidad=parseInt(prompt("Cuantas unidades quieres: "));
             actualizarCantidad(cantidad, producto, color);
-            console.log("Total producto 1: " + multiplicacion(producto1,cantidad));
-            total= total + multiplicacion(producto1,cantidad);
+            console.log("Total producto 1: " + totalmult(producto,cantidad,multi));
+            total= total + totalmult(producto,cantidad,multi);
             break;
         case 2:
             cantidad=parseInt(prompt("Cuantas unidades quieres: "));
             actualizarCantidad(cantidad, producto, color);
-            console.log("Total producto 2: " + multiplicacion(producto2,cantidad));
-            total=total + multiplicacion(producto2,cantidad);
+            console.log("Total producto 2: " + totalmult(producto,cantidad,multi));
+            total=total + totalmult(producto,cantidad,multi);
             break;
         case 3:
             cantidad=parseInt(prompt("Cuantas unidades quieres: "));
             actualizarCantidad(cantidad, producto, color);
-            console.log("Total producto 3: " + multiplicacion(producto3,cantidad));
-            total= total + multiplicacion(producto3,cantidad);
+            console.log("Total producto 3: " + totalmult(producto,cantidad,multi));
+            total= total + totalmult(producto,cantidad,multi);
             break;
         case 4:
             cantidad=parseInt(prompt("Cuantas unidades quieres: "));
             actualizarCantidad(cantidad, producto, color);
-            console.log("Total producto 4: " + multiplicacion(producto4,cantidad));
-            total= total + multiplicacion(producto4,cantidad);
+            console.log("Total producto 4: " + totalmult(producto,cantidad,multi));
+            total= total + totalmult(producto,cantidad,multi);
             break;
         case 5:
             cantidad=parseInt(prompt("Cuantas unidades quieres: "));
             actualizarCantidad(cantidad, producto, color);
-            console.log("Total producto 5: " + multiplicacion(producto5,cantidad));
-            total= total + multiplicacion(producto5,cantidad);
-
+            console.log("Total producto 5: " + totalmult(producto,cantidad,multi));
+            total= total + totalmult(producto,cantidad,multi);
             break;
         default:
             alert("No ingresaste una opción valida, intenta de nuevo, recuerda que debes poner solo el número del producto que quieres")
@@ -178,17 +188,9 @@ console.log("El valor de tu pedido es: "+ total);
 
 function mostrarProductos(){
 
-    const producto1= 70000;
-    const producto2 = 20000;
-    const producto3 = 80500;
-    const producto4 = 105800;
-    const producto5 =38750;
-    
-    console.log("Producto 1: " + producto1);
-    console.log("Producto 2: " + producto2);
-    console.log("Producto 3: " + producto3);
-    console.log("Producto 4: " + producto4);
-    console.log("Producto 5: " + producto5);
+    for(prod of productos){
+        console.log(prod.nombre + ": "+ prod.precio);
+    }
 }
 
 
