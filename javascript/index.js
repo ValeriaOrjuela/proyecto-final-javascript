@@ -83,13 +83,14 @@ function disposeProducts (){
                 <h2>${prod.nombre}</h2>
                 <img src="../img/jarron.jpg"" alt="Imagen producto x" class = "imgprod">
                 <h3>$ ${prod.precio}</h3>
-                <button>añadir</button>
+                <button onClick="carrito(${prod.id})">añadir</button>
 
     `;
     espacio.appendChild(contenedor);
 }
 }
 disposeProducts();
+
 
 
 // console.log(productos);
