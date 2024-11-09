@@ -91,17 +91,22 @@ function disposeProducts() {
 
 
 function agregarAlCarrito(id) {
+
     const CARRITO = JSON.parse(localStorage.getItem('carrito')) || [];
+    console.log("prueba");
+    console.log(CARRITO);
     const producto = productos.find(prod => prod.id === id);
 
     const productoEncontrado = CARRITO.find(prod => prod.id === id);
+    console.log("prueba");
+    console.log( productoEncontrado);
     if (productoEncontrado) {
         productoEncontrado.cantidad += 1;
     } else {
         CARRITO.push({ ...producto, cantidad: 1 });
     }
+localStorage.setItem('carrito', JSON.stringify(CARRITO));
 
-    localStorage.setItem('carrito', JSON.stringify(CARRITO));
 }
 
 function mostrarCarrito() {
@@ -116,7 +121,8 @@ function mostrarCarrito() {
         <button onclick="eliminarDelCarrito(${index})">Eliminar producto</button> 
         `
         carritoList.appendChild(li);
-        total1 += producto.precio*producto.cantidad;
+        total1 = total1 + producto.precio*producto.cantidad;
+        
     })
     document.getElementById("total").textContent = `total: $${total1}`;
 }
@@ -138,174 +144,174 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 // }
 
-function agregarProducto(id, nombre, precio) {
-    let color, cantidad
-    this.id = id;
-    this.nombre = nombre;
-    this.precio = precio;
-    let colores = parseInt(prompt("Cuantos colores va a inscribir?"));
-    for (let cant = 0; cant <= colores - 1; cant++) {
-        color = prompt("Ingrese el color");
-        color = color.toLocaleLowerCase()
-        cantidad = parseInt(prompt("Cuantos porductos hay de ese color"))
-        this.colorDisp = new ColorDisp(color, cantidad);
-    }
-}
+// function agregarProducto(id, nombre, precio) {
+//     let color, cantidad
+//     this.id = id;
+//     this.nombre = nombre;
+//     this.precio = precio;
+//     let colores = parseInt(prompt("Cuantos colores va a inscribir?"));
+//     for (let cant = 0; cant <= colores - 1; cant++) {
+//         color = prompt("Ingrese el color");
+//         color = color.toLocaleLowerCase()
+//         cantidad = parseInt(prompt("Cuantos porductos hay de ese color"))
+//         this.colorDisp = new ColorDisp(color, cantidad);
+//     }
+// }
 
-function ColorDisp(color, cantidad) {
-    this.color = color;
-    this.cantidad = cantidad;
+// function ColorDisp(color, cantidad) {
+//     this.color = color;
+//     this.cantidad = cantidad;
 
-}
-
-
-// let prod4 = new agregarProducto(4,"producto 4", 20000);
-// console.log(prod4);
+// }
 
 
-function actualizarCantidad(cantidad, producto, color) {
-    for (const prod of productos) {
-        console.log(prod);
-        if (prod.id === producto) {
-            for (const colord of prod.colorDisp) {
-                if (colord.color === color) {
-                    colord.cantidad = colord.cantidad - cantidad;
-                    if (colord.cantidad <= 1) {
-                        prod.colorDisp = prod.colorDisp.filter(mayores => mayores.cantidad >= 1);
-                        console.log(prod.colorDisp);
-                    }
-                }
-            }
-        }
-    }
-}
-
-function mostrarColores(producto) {
-    for (const prod of productos) {
-        if (prod.id === producto) {
-            for (const col of prod.colorDisp) {
-                console.log(col.color)
-            }
-        }
-    }
-}
-function totalmult(prod, canti, operacion) {
-    let precio
-    for (const produ of productos) {
-        if (prod === produ.id) {
-            precio = produ.precio;
-        }
-    }
-    return operacion(precio, canti);
-}
-function multi(a, b) {
-    return a * b;
-}
-
-function verificacionColor(produ, color) {
-    let disp
-    for (const prod of productos) {
-        if (produ === prod.id) {
-            for (col of prod.colorDisp) {
-                if (color === col.color) {
-                    disp = true;
-                    return true;
-                }
-            }
-        }
-    }
-    if (disp != true) {
-        return false;
-    }
-}
+// // let prod4 = new agregarProducto(4,"producto 4", 20000);
+// // console.log(prod4);
 
 
-while (true) {
+// function actualizarCantidad(cantidad, producto, color) {
+//     for (const prod of productos) {
+//         console.log(prod);
+//         if (prod.id === producto) {
+//             for (const colord of prod.colorDisp) {
+//                 if (colord.color === color) {
+//                     colord.cantidad = colord.cantidad - cantidad;
+//                     if (colord.cantidad <= 1) {
+//                         prod.colorDisp = prod.colorDisp.filter(mayores => mayores.cantidad >= 1);
+//                         console.log(prod.colorDisp);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-    mostrarProductos();
+// function mostrarColores(producto) {
+//     for (const prod of productos) {
+//         if (prod.id === producto) {
+//             for (const col of prod.colorDisp) {
+//                 console.log(col.color)
+//             }
+//         }
+//     }
+// }
+// function totalmult(prod, canti, operacion) {
+//     let precio
+//     for (const produ of productos) {
+//         if (prod === produ.id) {
+//             precio = produ.precio;
+//         }
+//     }
+//     return operacion(precio, canti);
+// }
+// function multi(a, b) {
+//     return a * b;
+// }
 
-    producto = parseInt(prompt("Cual producto deseas: 1, 2, 3, 4 o 5? "));
-    console.log(producto);
+// function verificacionColor(produ, color) {
+//     let disp
+//     for (const prod of productos) {
+//         if (produ === prod.id) {
+//             for (col of prod.colorDisp) {
+//                 if (color === col.color) {
+//                     disp = true;
+//                     return true;
+//                 }
+//             }
+//         }
+//     }
+//     if (disp != true) {
+//         return false;
+//     }
+// }
 
-    mostrarColores(producto);
 
-    let color = prompt("Cual de los colores quieres?");
+// while (true) {
 
+//     mostrarProductos();
 
+//     producto = parseInt(prompt("Cual producto deseas: 1, 2, 3, 4 o 5? "));
+//     console.log(producto);
 
-    if (producto != NaN) {
-        while (verificacionColor(producto, color) == false) {
-            if (verificacionColor(producto, color) == false) {
-                console.log("Ingresaste un color invalido");
-                mostrarColores(producto);
-                color = prompt("Cual de los colores quieres?");
-                if (color === "") {
-                    break;
-                }
-            };
-        };
-    }
+//     mostrarColores(producto);
+
+//     let color = prompt("Cual de los colores quieres?");
 
 
 
-    color = color.toLocaleLowerCase();
+//     if (producto != NaN) {
+//         while (verificacionColor(producto, color) == false) {
+//             if (verificacionColor(producto, color) == false) {
+//                 console.log("Ingresaste un color invalido");
+//                 mostrarColores(producto);
+//                 color = prompt("Cual de los colores quieres?");
+//                 if (color === "") {
+//                     break;
+//                 }
+//             };
+//         };
+//     }
 
 
-    switch (producto) {
-        case 1:
-            cantidad = parseInt(prompt("Cuantas unidades quieres: "));
-            actualizarCantidad(cantidad, producto, color);
-            console.log("Total producto 1: " + totalmult(producto, cantidad, multi));
-            total = total + totalmult(producto, cantidad, multi);
-            break;
-        case 2:
-            cantidad = parseInt(prompt("Cuantas unidades quieres: "));
-            actualizarCantidad(cantidad, producto, color);
-            console.log("Total producto 2: " + totalmult(producto, cantidad, multi));
-            total = total + totalmult(producto, cantidad, multi);
-            break;
-        case 3:
-            cantidad = parseInt(prompt("Cuantas unidades quieres: "));
-            actualizarCantidad(cantidad, producto, color);
-            console.log("Total producto 3: " + totalmult(producto, cantidad, multi));
-            total = total + totalmult(producto, cantidad, multi);
-            break;
-        case 4:
-            cantidad = parseInt(prompt("Cuantas unidades quieres: "));
-            actualizarCantidad(cantidad, producto, color);
-            console.log("Total producto 4: " + totalmult(producto, cantidad, multi));
-            total = total + totalmult(producto, cantidad, multi);
-            break;
-        case 5:
-            cantidad = parseInt(prompt("Cuantas unidades quieres: "));
-            actualizarCantidad(cantidad, producto, color);
-            console.log("Total producto 5: " + totalmult(producto, cantidad, multi));
-            total = total + totalmult(producto, cantidad, multi);
-            break;
-        default:
-            alert("No ingresaste una opción valida, intenta de nuevo, recuerda que debes poner solo el número del producto que quieres")
-    }
 
-    seguir = prompt("Deseas seguir tu compra? (ingresa 'si' para seguir o 'no' para seguir con el total ");
+//     color = color.toLocaleLowerCase();
 
 
-    if (seguir.toLowerCase() === "no") {
-        break;
-    } else if (seguir.toLowerCase() !== "si" && seguir.toLowerCase() !== "no") {
-        console.log("No ingresaste una opción valida, por lo tanto seguiras con la compra");
-    }
+//     switch (producto) {
+//         case 1:
+//             cantidad = parseInt(prompt("Cuantas unidades quieres: "));
+//             actualizarCantidad(cantidad, producto, color);
+//             console.log("Total producto 1: " + totalmult(producto, cantidad, multi));
+//             total = total + totalmult(producto, cantidad, multi);
+//             break;
+//         case 2:
+//             cantidad = parseInt(prompt("Cuantas unidades quieres: "));
+//             actualizarCantidad(cantidad, producto, color);
+//             console.log("Total producto 2: " + totalmult(producto, cantidad, multi));
+//             total = total + totalmult(producto, cantidad, multi);
+//             break;
+//         case 3:
+//             cantidad = parseInt(prompt("Cuantas unidades quieres: "));
+//             actualizarCantidad(cantidad, producto, color);
+//             console.log("Total producto 3: " + totalmult(producto, cantidad, multi));
+//             total = total + totalmult(producto, cantidad, multi);
+//             break;
+//         case 4:
+//             cantidad = parseInt(prompt("Cuantas unidades quieres: "));
+//             actualizarCantidad(cantidad, producto, color);
+//             console.log("Total producto 4: " + totalmult(producto, cantidad, multi));
+//             total = total + totalmult(producto, cantidad, multi);
+//             break;
+//         case 5:
+//             cantidad = parseInt(prompt("Cuantas unidades quieres: "));
+//             actualizarCantidad(cantidad, producto, color);
+//             console.log("Total producto 5: " + totalmult(producto, cantidad, multi));
+//             total = total + totalmult(producto, cantidad, multi);
+//             break;
+//         default:
+//             alert("No ingresaste una opción valida, intenta de nuevo, recuerda que debes poner solo el número del producto que quieres")
+//     }
+
+//     seguir = prompt("Deseas seguir tu compra? (ingresa 'si' para seguir o 'no' para seguir con el total ");
 
 
-}
+//     if (seguir.toLowerCase() === "no") {
+//         break;
+//     } else if (seguir.toLowerCase() !== "si" && seguir.toLowerCase() !== "no") {
+//         console.log("No ingresaste una opción valida, por lo tanto seguiras con la compra");
+//     }
 
-console.log("El valor de tu pedido es: " + total);
 
-function mostrarProductos() {
+// }
 
-    for (prod of productos) {
-        console.log(prod.nombre + ": " + prod.precio);
-    }
-}
+// console.log("El valor de tu pedido es: " + total);
+
+// function mostrarProductos() {
+
+//     for (prod of productos) {
+//         console.log(prod.nombre + ": " + prod.precio);
+//     }
+// }
 
 
 
