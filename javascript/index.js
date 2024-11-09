@@ -9,6 +9,7 @@ let productos = [
         id: 1,
         nombre: "Lampara",
         cantidad: 500,
+        imagen: '../img/jarron.jpg',
         colorDisp: [
             {
                 color: "rojo",
@@ -32,6 +33,7 @@ let productos = [
     {
         id: 2,
         nombre: "Lampara ninos",
+        imagen: '../img/luz_ninos.jpg',
         cantidad: 500,
         colorDisp: [
 
@@ -49,6 +51,7 @@ let productos = [
     {
         id: 3,
         nombre: "matera",
+        imagen: '../img/matera.jpg',
         cantidad: 500,
         colorDisp: [
             {
@@ -80,7 +83,7 @@ function disposeProducts() {
         contenedor.innerHTML = `
 
                 <h2>${producto.nombre}</h2>
-                <img src="../img/jarron.jpg"" alt="Imagen producto x" class = "imgprod">
+                <img src="${producto.imagen}"" alt="Imagen producto x" class = "imgprod">
                 <h3>$ ${producto.precio}</h3>
                 <button onclick="agregarAlCarrito(${producto.id})">añadir</button>
                 `;
