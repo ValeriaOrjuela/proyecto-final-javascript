@@ -3,12 +3,12 @@
 let total, cantidad, multiplicacion, suma, producto;
 total = 0;
 let seguir;
-let carrito = [];
+
 let productos = [
     {
         id: 1,
         nombre: "Lampara",
-
+        cantidad: 500,
         colorDisp: [
             {
                 color: "rojo",
@@ -32,7 +32,7 @@ let productos = [
     {
         id: 2,
         nombre: "Lampara ninos",
-
+        cantidad: 500,
         colorDisp: [
 
             {
@@ -49,7 +49,7 @@ let productos = [
     {
         id: 3,
         nombre: "matera",
-
+        cantidad: 500,
         colorDisp: [
             {
                 color: "morado",
@@ -74,58 +74,51 @@ let productos = [
 
 function disposeProducts() {
     let espacio = document.getElementById("mejoresProductos");
-
-    for (const prod of productos) {
+    productos.forEach(producto => {
         let contenedor = document.createElement("div");
         contenedor.className = "tarjetasProductos";
         contenedor.innerHTML = `
 
-                <h2>${prod.nombre}</h2>
+                <h2>${producto.nombre}</h2>
                 <img src="../img/jarron.jpg"" alt="Imagen producto x" class = "imgprod">
-                <h3>$ ${prod.precio}</h3>
-                <button onClick="anadirCarrito(${prod.id})">añadir</button>
-    `;
-
+                <h3>$ ${producto.precio}</h3>
+                <button onclick="agregarAlCarrito(${producto.id})">añadir</button>
+                `;
         espacio.appendChild(contenedor);
-    }
+
+    });
 }
 
-let productojson = JSON.stringify(productos);
-localStorage.setItem('productos', productojson);
-let objetosJson = JSON.parse(localStorage.getItem('productos'));
-console.log(objetosJson);
 
 function agregarAlCarrito(id) {
     const CARRITO = JSON.parse(localStorage.getItem('carrito')) || [];
-    const PRODUCTO = productos.find(prod => prod.id === id);
+    const producto = productos.find(prod => prod.id === id);
 
     const productoEncontrado = CARRITO.find(prod => prod.id === id);
     if (productoEncontrado) {
         productoEncontrado.cantidad += 1;
     } else {
-        CARRITO.push({ ...PRODUCTO, cantidad: 1 });
+        CARRITO.push({ ...producto, cantidad: 1 });
     }
 
     localStorage.setItem('carrito', JSON.stringify(CARRITO));
-    disposeProducts();
 }
 
 function mostrarCarrito() {
     const CARRITO = JSON.parse(localStorage.getItem('carrito')) || [];
-    console.log(CARRITO);
     const carritoList = document.getElementById("carrito");
     carritoList.innerHTML = '';
-    let total = 0;
+    let total1 = 0;
     CARRITO.forEach((producto, index) => {
         let li = document.createElement("li");
         li.textContent = `${producto.nombre} - ${producto.precio}`;
-        li.innerHTML = `
+        li.innerHTML += `
         <button onclick="eliminarDelCarrito(${index})">Eliminar producto</button> 
         `
         carritoList.appendChild(li);
-        total += producto.precio*producto.cantidad;
+        total1 += producto.precio*producto.cantidad;
     })
-    document.getElementById("total").textContent = `total: $${total}`;
+    document.getElementById("total").textContent = `total: $${total1}`;
 }
 
 document.addEventListener("DOMContentLoaded", () =>{
