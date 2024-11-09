@@ -35,3 +35,22 @@ main .categorias div {
   justify-content: space-around;
   padding: 2px;
   background-color: #e3d5ca; }
+
+main #mejoresProductos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 6px; }
+  main #mejoresProductos .tarjetasProductos {
+    width: 200px;
+    box-shadow: 2px 2px 3px  black;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    main #mejoresProductos .tarjetasProductos h2 {
+      color: #0B0033; }
+    main #mejoresProductos .tarjetasProductos img {
+      width: 150px;
+      height: 200px; }
+    main #mejoresProductos .tarjetasProductos h3 {
+      color: #0B0033; }

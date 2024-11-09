@@ -1,13 +1,5 @@
 
 
-
-const producto1 = 70000;
-const producto2 = 20000;
-const producto3 = 80500;
-const producto4 = 105800;
-const producto5 = 38750;
-
-
 let total, cantidad, multiplicacion, suma, producto;
 total = 0;
 let seguir;
@@ -79,6 +71,26 @@ let productos = [
         precio: 3500
     }
 ];
+
+function disposeProducts (){
+    let espacio = document.getElementById("mejoresProductos");
+    
+    for(const prod of productos){
+    let contenedor = document.createElement("div");
+    contenedor.className = "tarjetasProductos";
+    contenedor.innerHTML = `
+
+                <h2>${prod.nombre}</h2>
+                <img src="../img/jarron.jpg"" alt="Imagen producto x" class = "imgprod">
+                <h3>$ ${prod.precio}</h3>
+                <button>añadir</button>
+
+    `;
+    espacio.appendChild(contenedor);
+}
+}
+disposeProducts();
+
 
 // console.log(productos);
 // for( const prod of productos){
@@ -257,22 +269,8 @@ function mostrarProductos() {
         console.log(prod.nombre + ": " + prod.precio);
     }
 }
-function mostrarProdHTML(){
-    const PRODUCTOS_SECTION = document.getElementById('productosDestacados');
-    productos.forEach(producto => {
-        const CARD_DIV = document.createElement('div');
-        CARD_DIV.className = 'card-container';
-        CARD_DIV.innerHTML = 
-        `
-        <h3>${producto.nombre}</h3>
-        <p>${producto.precio}</p>
-        <button onclick = "anadirCarrito(${producto.id})">agregar</button>
 
-        `
-        PRODUCTOS_SECTION.appendChild(CARD_DIV);
-    });
-}
-mostrarProdHTML()
+
 
 
 

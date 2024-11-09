@@ -7,4 +7,29 @@ main{
             background-color: nth($coloresPrincipales , 3 );
         }
     }
+    #mejoresProductos{
+        
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 6px;
+        .tarjetasProductos{
+            width: 200px;
+            box-shadow: 2px 2px 3px  black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h2{
+                color: #0B0033 ;
+            }
+            img{
+                width: 150px;
+                height:200px;
+
+            }
+            h3{
+                color: #0B0033 ;
+            }
+        }
+    }
 }
