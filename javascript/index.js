@@ -3,7 +3,7 @@
 let total, cantidad, multiplicacion, suma, producto;
 total = 0;
 let seguir;
-let carrito =[];
+let carrito = [];
 let productos = [
     {
         id: 1,
@@ -72,28 +72,65 @@ let productos = [
     }
 ];
 
-function disposeProducts (){
+function disposeProducts() {
     let espacio = document.getElementById("mejoresProductos");
-    
-    for(const prod of productos){
-    let contenedor = document.createElement("div");
-    contenedor.className = "tarjetasProductos";
-    contenedor.innerHTML = `
+
+    for (const prod of productos) {
+        let contenedor = document.createElement("div");
+        contenedor.className = "tarjetasProductos";
+        contenedor.innerHTML = `
 
                 <h2>${prod.nombre}</h2>
                 <img src="../img/jarron.jpg"" alt="Imagen producto x" class = "imgprod">
                 <h3>$ ${prod.precio}</h3>
                 <button onClick="anadirCarrito(${prod.id})">añadir</button>
     `;
-    
-    espacio.appendChild(contenedor);
+
+        espacio.appendChild(contenedor);
+    }
 }
-}
-disposeProducts();
+
 let productojson = JSON.stringify(productos);
 localStorage.setItem('productos', productojson);
-let objetosJson =JSON.parse(localStorage.getItem('productos'));
+let objetosJson = JSON.parse(localStorage.getItem('productos'));
 console.log(objetosJson);
+
+function agregarAlCarrito(id) {
+    const CARRITO = JSON.parse(localStorage.getItem('carrito')) || [];
+    const PRODUCTO = productos.find(prod => prod.id === id);
+
+    const productoEncontrado = CARRITO.find(prod => prod.id === id);
+    if (productoEncontrado) {
+        productoEncontrado.cantidad += 1;
+    } else {
+        CARRITO.push({ ...PRODUCTO, candtidad: 1 });
+    }
+
+    localStorage.setItem('carrito', JSON.stringify(CARRITO));
+    disposeProducts();
+}
+
+function mostrarCarrito() {
+    const CARRITO = JSON.parse(localStorage.getItem('carrito')) || [];
+    const carritoList = getElementById("carrito");
+    carritoList.innerHTML = ``;
+    let total = 0;
+    CARRITO.forEach((producto, index) => {
+        let li = document.createElement("li");
+        li.textContent = `${producto.nombre} -${producto.precio}`;
+        li.innerHTML = `
+        <button onclick="eliminarDelCarrito(${index})">Eliminar producto</button> 
+        `
+        carritoList.appendChild(li);
+        total += producto.precio*producto.cantidad;
+    })
+    document.getElementById("total").textContent = `total: $${total}`;
+}
+
+document.addEventListener("DOMContentLoaded", () =>{
+    disposeProducts();
+    mostrarCarrito();
+});
 
 
 
@@ -113,15 +150,15 @@ function agregarProducto(id, nombre, precio) {
     this.nombre = nombre;
     this.precio = precio;
     let colores = parseInt(prompt("Cuantos colores va a inscribir?"));
-    for(let cant = 0; cant <= colores-1; cant++){
-        color= prompt("Ingrese el color");
-        color= color.toLocaleLowerCase()
+    for (let cant = 0; cant <= colores - 1; cant++) {
+        color = prompt("Ingrese el color");
+        color = color.toLocaleLowerCase()
         cantidad = parseInt(prompt("Cuantos porductos hay de ese color"))
-        this.colorDisp = new ColorDisp(color,cantidad);
+        this.colorDisp = new ColorDisp(color, cantidad);
     }
 }
 
-function ColorDisp(color, cantidad){
+function ColorDisp(color, cantidad) {
     this.color = color;
     this.cantidad = cantidad;
 
@@ -202,13 +239,13 @@ while (true) {
 
 
 
-    if(producto != NaN ){
+    if (producto != NaN) {
         while (verificacionColor(producto, color) == false) {
             if (verificacionColor(producto, color) == false) {
                 console.log("Ingresaste un color invalido");
                 mostrarColores(producto);
                 color = prompt("Cual de los colores quieres?");
-                if(color === ""){
+                if (color === "") {
                     break;
                 }
             };
