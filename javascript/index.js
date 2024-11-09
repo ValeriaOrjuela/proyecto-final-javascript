@@ -7,7 +7,7 @@ let carrito =[];
 let productos = [
     {
         id: 1,
-        nombre: "producto 1",
+        nombre: "Lampara",
 
         colorDisp: [
             {
@@ -31,7 +31,7 @@ let productos = [
     },
     {
         id: 2,
-        nombre: "producto 2",
+        nombre: "Lampara ninos",
 
         colorDisp: [
 
@@ -48,7 +48,7 @@ let productos = [
     },
     {
         id: 3,
-        nombre: "producto 3",
+        nombre: "matera",
 
         colorDisp: [
             {
@@ -83,13 +83,18 @@ function disposeProducts (){
                 <h2>${prod.nombre}</h2>
                 <img src="../img/jarron.jpg"" alt="Imagen producto x" class = "imgprod">
                 <h3>$ ${prod.precio}</h3>
-                <button onClick="carrito(${prod.id})">añadir</button>
-
+                <button onClick="anadirCarrito(${prod.id})">añadir</button>
     `;
+    
     espacio.appendChild(contenedor);
 }
 }
 disposeProducts();
+let productojson = JSON.stringify(productos);
+localStorage.setItem('productos', productojson);
+let objetosJson =JSON.parse(localStorage.getItem('productos'));
+console.log(objetosJson);
+
 
 
 
