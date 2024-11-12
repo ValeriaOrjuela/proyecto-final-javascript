@@ -72,6 +72,31 @@ let productos = [
             }
         ],
         precio: 3500
+    },
+    {
+        id: 3,
+        nombre: "tapete",
+        imagen: '../img/matera.jpg',
+        cantidad: 500,
+        colorDisp: [
+            {
+                color: "morado",
+                cantidad: 500,
+            },
+            {
+                color: "gris",
+                cantidad: 200,
+            },
+            {
+                color: "blanco",
+                cantidad: 500,
+            },
+            {
+                color: "negro",
+                cantidad: 400,
+            }
+        ],
+        precio: 3500
     }
 ];
 
